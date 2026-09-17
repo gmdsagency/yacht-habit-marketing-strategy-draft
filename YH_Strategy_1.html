@@ -1,0 +1,1400 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Yacht Habit Strategy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;500;600&display=swap">
+<style>
+/* ── GMDS BRAND TOKENS ── */
+:root {
+  --gmds-blue: #3A86FF;
+  --gmds-purple: #5B2D8E;
+  --gmds-mid: #4B3BC8;
+  --gmds-grad: linear-gradient(135deg, #3A86FF 0%, #4B3BC8 50%, #5B2D8E 100%);
+  --gmds-grad-h: linear-gradient(90deg, #3A86FF 0%, #5B2D8E 100%);
+
+  /* YH accent palette (used inside pillar cards) */
+  --yh-navy: #0A2342;
+  --yh-blue: #1B5299;
+  --yh-mid: #2E86C1;
+  --yh-light: #AED6F1;
+  --yh-xlight: #EAF4FB;
+
+  /* page surfaces */
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface2: #F7F8FC;
+  --border: #E8EAF2;
+  --text: #1A1A2E;
+  --text-2: #3A3A5C;
+  --text-3: #7878A0;
+
+  /* semantic */
+  --green: #1A6B3C;
+  --lgreen: #E8F5EE;
+  --warn: #C0392B;
+  --gold: #B7950B;
+  --lyell: #FEF9E7;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 16px rgba(58,134,255,0.08);
+  --shadow-md: 0 4px 24px rgba(58,134,255,0.13);
+}
+
+
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15.5px;
+  line-height: 1.72;
+  padding-inline: 16px;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5, .label {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  text-wrap: balance;
+}
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ── LAYOUT ── */
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0 32px;
+  padding-block: 32px;
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ── SIDEBAR NAV ── */
+.sidebar {
+  position: sticky;
+  top: 24px;
+}
+.sidebar-logo {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.sidebar-logo .gmds-letters {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: white;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.sidebar-logo .gmds-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.sidebar-client {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gmds-blue);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 6px;
+}
+nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: background .15s, color .15s;
+}
+nav a:hover, nav a.active {
+  background: var(--surface2);
+  color: var(--gmds-blue);
+}
+nav a .nav-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gmds-blue);
+  min-width: 18px;
+}
+.nav-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+/* ── MAIN CONTENT ── */
+main { min-width: 0; }
+
+/* ── HEADER HERO ── */
+.doc-header {
+  background: var(--gmds-grad);
+  border-radius: var(--radius);
+  padding: 40px 40px 36px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.doc-header::before {
+  content: 'GMDS';
+  position: absolute;
+  right: -20px; top: -20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 140px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.doc-header .eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 10px;
+}
+.doc-header h1 {
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 900;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.doc-header .tagline {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+.doc-header .meta-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.meta-chip {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ── SECTION BLOCKS ── */
+.section { margin-bottom: 40px; scroll-margin-top: 24px; }
+.section-banner {
+  background: var(--gmds-grad);
+  border-radius: var(--radius);
+  padding: 14px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+}
+.section-banner h2 {
+  font-size: 14px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.section-banner .s-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.12);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.sub-banner {
+  background: #F0F4FF;
+  border-left: 3px solid var(--gmds-blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2A4BBC;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.insight-card {
+  background: #FFFFFF;
+  border: 1px solid #D0DCFF;
+  border-left: 4px solid var(--gmds-blue);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(58,134,255,0.07);
+}
+@media (prefers-color-scheme: dark) {
+}
+
+.insight-card .ic-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: #3A86FF;
+  margin-bottom: 8px;
+}
+.insight-card p { font-style: italic; color: #2A2A4A; font-size: 14px; line-height: 1.6; }
+
+/* ── TABLES ── */
+.table-wrap { overflow-x: auto; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead tr { background: var(--gmds-grad); }
+thead th {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+}
+tbody tr { border-bottom: 1px solid var(--border); }
+tbody tr:hover { background: var(--surface2); }
+tbody td { padding: 10px 14px; color: #3A3A5C; vertical-align: top; }
+tbody td:first-child { font-weight: 600; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 12px; }
+.td-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.badge-high { background: #FFE5E5; color: #C0392B; }
+.badge-med { background: #FFF8E5; color: #B7950B; }
+.badge-low { background: var(--lgreen); color: var(--green); }
+
+/* ── SWOT ── */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+@media (max-width: 600px) { .swot-grid { grid-template-columns: 1fr; } }
+.swot-cell {
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  font-size: 13.5px;
+}
+.swot-cell h4 {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  margin-bottom: 10px;
+}
+.swot-cell ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.swot-cell li::before { content: '• '; }
+.swot-s { background: var(--lgreen); border: 1px solid #A3D9B8; }
+.swot-s h4 { color: var(--green); }
+.swot-w { background: var(--lyell); border: 1px solid #F0D98A; }
+.swot-w h4 { color: var(--gold); }
+.swot-o { background: var(--yh-xlight); border: 1px solid var(--yh-light); }
+.swot-o h4 { color: var(--yh-blue); }
+.swot-t { background: #FFF0EE; border: 1px solid #F5C6BE; }
+.swot-t h4 { color: var(--warn); }
+
+/* ── PERSONAS ── */
+.persona-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.persona-header {
+  background: var(--gmds-grad);
+  padding: 14px 20px;
+}
+.persona-header h3 { font-size: 15px; font-weight: 800; color: white; }
+.persona-header .p-range { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 2px; font-family: 'Nunito', sans-serif; }
+.persona-quote {
+  background: var(--surface2);
+  padding: 10px 20px;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border);
+}
+.persona-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 600px) { .persona-body { grid-template-columns: 1fr; } }
+.persona-col { padding: 16px 20px; }
+.persona-col + .persona-col { border-left: 1px solid var(--border); }
+@media (max-width: 600px) { .persona-col + .persona-col { border-left: none; border-top: 1px solid var(--border); } }
+.persona-col h5 {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gmds-blue);
+  margin-bottom: 8px;
+}
+.persona-col p, .persona-col li { font-size: 13px; color: var(--text-2); }
+.persona-col ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.persona-col li::before { content: '→ '; color: var(--gmds-blue); font-weight: 700; }
+.persona-pillars {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface2);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.persona-pillars span { font-size: 10px; font-weight: 700; color: var(--text-3); font-family: 'Montserrat', sans-serif; letter-spacing: .05em; }
+.pillar-tag {
+  background: var(--yh-xlight);
+  color: var(--yh-blue);
+  border: 1px solid var(--yh-light);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ── SMART GOALS ── */
+.goal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.goal-header {
+  background: var(--gmds-grad);
+  padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.goal-header h3 { font-size: 13px; font-weight: 800; color: #FFFFFF; letter-spacing: .04em; }
+.goal-num {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.smart-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 600px) { .smart-grid { grid-template-columns: 1fr; } }
+.smart-cell { padding: 14px 16px; border-right: 1px solid var(--border); }
+.smart-cell:last-child { border-right: none; }
+.smart-letter {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  background: var(--gmds-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.smart-word { font-size: 9px; font-weight: 700; letter-spacing: .1em; color: var(--text-3); text-transform: uppercase; margin-bottom: 6px; font-family: 'Montserrat', sans-serif; }
+.smart-cell p { font-size: 12.5px; color: var(--text-2); }
+
+/* ── KPI TABLE ── */
+.kpi-table thead tr { background: var(--gmds-grad); }
+.kpi-val { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--gmds-blue); font-size: 14px; }
+.kpi-target { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--gmds-purple); font-size: 14px; }
+
+/* ── PILLAR CARDS ── */
+.pillar-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+.pillar-top {
+  background: #12355E;
+  padding: 16px 22px;
+  display: flex; align-items: baseline; gap: 10px;
+}
+.pillar-num { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); }
+.pillar-name { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: #FFFFFF; text-transform: uppercase; letter-spacing: .03em; }
+.pillar-goal-row {
+  background: #EAF4FB;
+  padding: 10px 22px;
+  font-size: 13px;
+  color: #0A2342;
+  border-bottom: 1px solid #AED6F1;
+}
+.pillar-goal-row strong { color: #1B5299; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.pillar-chips {
+  background: white;
+  padding: 10px 22px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.goal-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+}
+.chip-primary { background: var(--yh-navy); }
+.chip-secondary { background: var(--yh-mid); }
+.chip-star { font-size: 12px; }
+.pillar-body { display: grid; grid-template-columns: 240px 1fr; }
+@media (max-width: 640px) { .pillar-body { grid-template-columns: 1fr; } }
+.pillar-left {
+  background: var(--surface2);
+  padding: 18px 20px;
+  border-right: 1px solid var(--border);
+}
+@media (max-width: 640px) { .pillar-left { border-right: none; border-bottom: 1px solid var(--border); } }
+.pillar-right { padding: 18px 22px; background: var(--surface); }
+.pillar-section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--yh-mid);
+  margin-bottom: 6px;
+}
+.pillar-purpose { font-size: 13.5px; color: var(--text); margin-bottom: 16px; line-height: 1.55; }
+.format-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.format-pct { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 800; color: var(--yh-navy); min-width: 42px; }
+.format-type { font-size: 13px; color: var(--text-2); }
+.tactic-row {
+  display: flex; gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.tactic-arrow { color: var(--yh-mid); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+.pillar-cta {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--yh-xlight);
+  border-left: 3px solid var(--yh-mid);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: var(--yh-navy);
+}
+.pillar-cta strong { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: 3px; color: var(--yh-blue); }
+.manychat-kw { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.kw-badge {
+  background: var(--yh-navy);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+.kw-lang { font-size: 10px; color: var(--text-3); align-self: center; }
+
+/* ── PAID MEDIA ── */
+.campaign-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+@media (max-width: 700px) { .campaign-grid { grid-template-columns: 1fr; } }
+.campaign-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.campaign-header {
+  background: var(--gmds-grad);
+  padding: 10px 14px;
+}
+.campaign-header h4 { font-size: 11px; font-weight: 800; color: #FFFFFF; text-transform: uppercase; letter-spacing: .06em; }
+.campaign-body { padding: 14px; }
+.campaign-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+.campaign-row:last-child { border-bottom: none; }
+.campaign-row span:first-child { color: var(--text-3); font-weight: 600; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+.campaign-row span:last-child { color: var(--text); font-weight: 700; }
+
+/* ── ACTION PLAN ── */
+.phase-banner {
+  border-radius: var(--radius);
+  padding: 10px 18px;
+  margin-bottom: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.phase-done { background: linear-gradient(90deg, #1A6B3C, #2E86C1); }
+.phase-now { background: var(--gmds-grad-h); }
+.phase-next { background: linear-gradient(90deg, #4B3BC8, #5B2D8E); }
+.action-table tbody tr.done-row { background: var(--lgreen); }
+.action-table tbody tr.prog-row { background: var(--lyell); }
+.status-badge { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
+.s-done { background: var(--lgreen); color: var(--green); }
+.s-prog { background: var(--lyell); color: var(--gold); }
+.s-pend { background: var(--surface2); color: var(--text-3); }
+
+/* ── TWO-COL LIST ── */
+.two-col { display: grid; grid-template-columns: minmax(140px, 200px) 1fr; gap: 0; margin-bottom: 20px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.two-col-row { display: contents; }
+.two-col-row > * { padding: 10px 14px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+.two-col-row:last-child > * { border-bottom: none; }
+.two-col-row > *:first-child {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2A4BBC;
+  background: #F0F4FF;
+  border-right: 1px solid var(--border);
+}
+.two-col-row > *:last-child { color: var(--text-2); background: var(--surface); }
+
+/* ── BULLETS ── */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.bullet-list li {
+  display: flex; gap: 8px;
+  font-size: 13.5px; color: var(--text-2);
+  line-height: 1.5;
+}
+.bullet-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gmds-blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  text-align: center;
+  padding: 32px 0 16px;
+  border-top: 2px solid var(--gmds-blue);
+  margin-top: 48px;
+}
+.doc-footer .tagline-big {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  background: var(--gmds-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.doc-footer .foot-meta { font-size: 12px; color: var(--text-3); }
+
+/* body spacing helpers */
+.sp { height: 16px; }
+.sp-sm { height: 8px; }
+.body-text { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 14px; }
+
+/* ── GLOBAL: white text on any gradient/dark bg container ── */
+.section-banner *,
+.doc-header *,
+.goal-header *,
+.campaign-header *,
+.persona-header *,
+.phase-done, .phase-now, .phase-next,
+.pillar-top *,
+.goal-num {
+  color: #FFFFFF !important;
+}
+/* Exceptions: keep colored text inside light-bg children */
+.smart-cell * { color: inherit !important; }
+.smart-letter { background: var(--gmds-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent !important; }
+</style>
+
+<div class="page-wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="data:image/png;base64,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" alt="GMDS" style="width:100%;max-width:160px;display:block;margin:0 auto;">
+    </div>
+    <div class="sidebar-client">Client: Yacht Habit</div>
+    <div class="nav-divider" style="margin-top:12px"></div>
+    <nav>
+      <ul>
+        <li><a href="#s1"><span class="nav-num">1</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="nav-num">2</span> Situation Analysis</a></li>
+        <li><a href="#s3"><span class="nav-num">3</span> Target Audience</a></li>
+        <li><a href="#s4"><span class="nav-num">4</span> SMART Goals & KPIs</a></li>
+        <li><a href="#s5"><span class="nav-num">5</span> Content Strategy</a></li>
+        <li><a href="#s6"><span class="nav-num">6</span> Paid Media Plan</a></li>
+        <li><a href="#s7"><span class="nav-num">7</span> Action Plan</a></li>
+        <li><a href="#s8"><span class="nav-num">8</span> Appendix</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <!-- HEADER -->
+    <header class="doc-header">
+      <div class="eyebrow">Full Marketing Strategy · Confidential</div>
+      <h1>Yacht Habit</h1>
+      <div class="tagline">Yacht Different. Yacht Better. Yacht Habit.</div>
+      <div class="meta-chips">
+        <span class="meta-chip">Prepared by GMDS Agency</span>
+        <span class="meta-chip">September 2026</span>
+        <span class="meta-chip">South Florida Market</span>
+        <span class="meta-chip">90-Day Roadmap</span>
+      </div>
+    </header>
+
+    <!-- S1: EXECUTIVE SUMMARY -->
+    <section class="section" id="s1">
+      <div class="section-banner">
+        <span class="s-num">01</span>
+        <h2>Executive Summary</h2>
+      </div>
+      <p class="body-text">Yacht Habit is a Florida-based luxury yacht brokerage positioned to become the most trusted, most recognized, and most digitally sophisticated brokerage in its market. This strategy launches Yacht Habit as a content-first brand — building an audience of qualified buyers through authentic storytelling, expert education, and multilingual reach — then converting that audience into closed deals through smart automation and targeted paid media.</p>
+
+      <div class="insight-card">
+        <div class="ic-label">The Central Insight</div>
+        <p>Every buyer segment — from the $50K enthusiast to the $5M elite owner — shares one fear: being treated like a transaction. Yacht Habit's entire positioning advantage is being the brokerage that listens first. Every content decision flows from this.</p>
+      </div>
+
+      <div class="sub-banner">What This Plan Does</div>
+      <div class="two-col">
+        <div class="two-col-row"><div>Builds Brand Authority</div><div>Through Broker Intelligence and SOLD Stories content that establishes Yacht Habit brokers as the most trusted voice in Florida yachting.</div></div>
+        <div class="two-col-row"><div>Grows a Qualified Audience</div><div>Through Dream Boats and Behind the Broker content that attracts buyers at every stage of the journey.</div></div>
+        <div class="two-col-row"><div>Captures Leads 24/7</div><div>Through ManyChat automation triggered by keyword comments — BOAT, SOLD, YATE, YAAXTA — no human required to initiate the conversation.</div></div>
+        <div class="two-col-row"><div>Reaches International Buyers</div><div>Through trilingual content (EN/ES/RU) targeting LATAM, Caribbean, and Eastern European buyers — a segment no competitor currently owns.</div></div>
+        <div class="two-col-row"><div>Amplifies with Paid Media</div><div>Through a disciplined $1,000/month Meta campaign strategy focused on retargeting warm audiences and amplifying top-performing organic content.</div></div>
+      </div>
+
+      <div class="insight-card">
+        <div class="ic-label">90-Day North Star</div>
+        <p>By December 16, 2026, Yacht Habit will have a fully operational content machine: 63 posts published, ManyChat live and generating conversations, paid campaigns running and generating measurable leads in South Florida, and a real content library to build on.</p>
+      </div>
+    </section>
+
+    <!-- S2: SITUATION ANALYSIS -->
+    <section class="section" id="s2">
+      <div class="section-banner">
+        <span class="s-num">02</span>
+        <h2>Situation Analysis</h2>
+      </div>
+
+      <div class="sub-banner">2.1 Market Overview</div>
+      <p class="body-text">The luxury yacht market in Florida is one of the most competitive in the world, concentrated in Fort Lauderdale, Miami, Palm Beach, and the surrounding waterways.</p>
+      <div class="two-col">
+        <div class="two-col-row"><div>$68 Trillion Transfer</div><div>The largest generational wealth transfer in history is underway. Younger HNW buyers are entering the yacht market — and they discover brands on Instagram and TikTok, not trade publications.</div></div>
+        <div class="two-col-row"><div>Social Drives Sales</div><div>Industry data shows 90% of buyers are influenced by brands they follow on social, and 74% engaged with video content before contacting a broker. Social is not supplemental — it is the primary discovery channel.</div></div>
+        <div class="two-col-row"><div>Multilingual Opportunity</div><div>LATAM and Eastern European buyers represent a growing share of Florida yacht purchases. No leading brokerage has a structured multilingual content presence. This is a clear white space.</div></div>
+        <div class="two-col-row"><div>AI Search (AEO)</div><div>Buyers increasingly use AI tools (ChatGPT, Perplexity, Google AI Overview) to research yachts. Brokerages that create authoritative, educational content will be cited by AI — free top-of-funnel reach.</div></div>
+        <div class="two-col-row"><div>Paid Social Outperforms</div><div>Meta ads deliver qualified buyers at $180–$420 CPL vs. $480–$950 for traditional listing platforms like YachtWorld. Meta also drove 47% of closings in recent case studies.</div></div>
+      </div>
+
+      <div class="sub-banner">2.2 Competitor Analysis</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Competitor</th><th>Base</th><th>Strength</th><th>Content Gap</th><th>Threat</th></tr></thead>
+          <tbody>
+            <tr><td>IYC</td><td>Monaco / Ft. Laud.</td><td>#1 digital score. Multilingual sites, high AI citation rate, +84% share-of-voice.</td><td>Corporate tone. No authentic broker personalities.</td><td><span class="td-badge badge-high">HIGH</span></td></tr>
+            <tr><td>Galati Yacht Sales</td><td>Anna Maria, FL</td><td>100K+ IG followers. 8M monthly reach. Video-first. Native, non-polished reels.</td><td>English-only. No multilingual strategy.</td><td><span class="td-badge badge-high">HIGH</span></td></tr>
+            <tr><td>Denison Yachting</td><td>Ft. Lauderdale</td><td>National brand recognition. Dedicated social accounts by niche.</td><td>Fragmented brand presence. Less cohesive storytelling.</td><td><span class="td-badge badge-med">MEDIUM</span></td></tr>
+            <tr><td>Northrop & Johnson</td><td>Ft. Lauderdale</td><td>Best-in-class listing image quality. Strong reputation.</td><td>Minimal social content strategy. AI search underdeveloped.</td><td><span class="td-badge badge-med">MEDIUM</span></td></tr>
+            <tr><td>Worth Avenue Yachts</td><td>Palm Beach</td><td>Strong local Palm Beach presence and network.</td><td>Low digital marketing maturity. Limited social content.</td><td><span class="td-badge badge-low">LOW</span></td></tr>
+            <tr><td>Fraser / Burgess</td><td>Monaco / London</td><td>Strong editorial content (Burgess). Established offline reputation (Fraser).</td><td>Not Florida-focused. British/European tone does not resonate locally.</td><td><span class="td-badge badge-low">LOW</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight-card">
+        <div class="ic-label">Competitive Advantage</div>
+        <p>Yacht Habit is the only Florida brokerage combining: (1) authentic broker-led storytelling, (2) structured trilingual content, (3) ManyChat 24/7 lead automation, and (4) a unified brand identity across all brokers. This combination is the moat.</p>
+      </div>
+
+      <div class="sub-banner">2.3 SWOT Analysis</div>
+      <div class="swot-grid">
+        <div class="swot-cell swot-s">
+          <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><polyline points="20 6 9 17 4 12"/></svg>Strengths</h4>
+          <ul>
+            <li>Trilingual content capability (EN/ES/RU)</li>
+            <li>ManyChat 24/7 automated lead capture</li>
+            <li>Unified brand identity — "Yacht Habit Brokers"</li>
+            <li>GMDS Agency full-service production support</li>
+            <li>Strong founder vision & listening-first culture</li>
+            <li>Florida + Bahamas market expertise</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-w">
+          <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:-2px;margin-right:5px"><line x1="5" y1="12" x2="19" y2="12"/></svg>Weaknesses</h4>
+          <ul>
+            <li>Established brokerage with experience but limited digital presence and content library</li>
+            <li>Starting organic social from near zero — audience must be built from scratch</li>
+            <li>Broker script review process adds production time</li>
+            <li>No existing paid media history or pixel data</li>
+            <li>$1,000/month paid budget is modest vs. competitors</li>
+            <li>Jet Habits rollout dependent on partner coordination</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-o">
+          <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>Opportunities</h4>
+          <ul>
+            <li>$68T generational wealth transfer — new HNW buyers entering market</li>
+            <li>LATAM & Eastern Europe buyer segments underserved by competitors</li>
+            <li>AI/AEO content strategy positions YH as first-mover</li>
+            <li>Reels algorithm favors authentic, story-driven video</li>
+            <li>Meta paid social delivers 2–3× better CPL than listing platforms</li>
+            <li>No competitor owns multilingual luxury yacht content on social</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-t">
+          <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:-2px;margin-right:5px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Threats</h4>
+          <ul>
+            <li>Galati Yacht Sales: 100K+ IG followers, 8M monthly reach, strong video machine</li>
+            <li>IYC: #1 in digital marketing maturity, multilingual, AI-optimized</li>
+            <li>Denison Yachting: strong national brand with dedicated social accounts</li>
+            <li>Algorithm changes reducing organic reach</li>
+            <li>Broker compliance risk — scripts must be reviewed before filming</li>
+            <li>Market slowdown could reduce buyer volume</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: PERSONAS -->
+    <section class="section" id="s3">
+      <div class="section-banner">
+        <span class="s-num">03</span>
+        <h2>Target Audience & Buyer Personas</h2>
+      </div>
+      <p class="body-text">Yacht Habit serves three distinct buyer segments. All three share one critical common thread: they distrust brokers who make them feel like a transaction.</p>
+
+      <!-- Persona 1 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <h3>The Enthusiast</h3>
+          <div class="p-range">$50,000 – $500,000 yacht range</div>
+        </div>
+        <div class="persona-quote">"Boating should be fun, not stressful or financially overwhelming."</div>
+        <div class="persona-body">
+          <div class="persona-col">
+            <h5>Mindset</h5>
+            <p style="margin-bottom:12px">Enthusiastic, practical, value-driven. Often a first-time buyer or upgrading from a smaller vessel. Sees the boat as fun and freedom — a lifestyle enhancer, not a luxury asset.</p>
+            <h5>How They Use the Boat</h5>
+            <ul>
+              <li>Day trips & sandbars</li>
+              <li>Fishing (offshore + inshore)</li>
+              <li>Short coastal runs</li>
+              <li>Family weekends</li>
+              <li>Waterfront restaurants</li>
+            </ul>
+          </div>
+          <div class="persona-col">
+            <h5>Fears</h5>
+            <ul style="margin-bottom:12px">
+              <li>"Can I really afford this long-term?"</li>
+              <li>"What if I can't handle this boat?"</li>
+              <li>"What if I regret this purchase?"</li>
+              <li>Feeling embarrassed asking "basic" questions</li>
+            </ul>
+            <h5>What They Want From a Broker</h5>
+            <p>A trusted boating friend — approachable, patient, honest, human. Someone who speaks plainly, respects their budget, and warns them about pitfalls.</p>
+          </div>
+        </div>
+        <div class="persona-pillars">
+          <span>Resonates with:</span>
+          <span class="pillar-tag">P1 Dream Boats</span>
+          <span class="pillar-tag">P2 Broker Intelligence</span>
+          <span class="pillar-tag">P5 Behind the Broker</span>
+        </div>
+      </div>
+
+      <!-- Persona 2 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <h3>The Aspiring Owner</h3>
+          <div class="p-range">$500,000 – $1,000,000 yacht range</div>
+        </div>
+        <div class="persona-quote">"I want something great — but I don't want to get burned."</div>
+        <div class="persona-body">
+          <div class="persona-col">
+            <h5>Mindset</h5>
+            <p style="margin-bottom:12px">Aspirational, value-conscious, hands-on. Buying their first "serious" yacht. Often stretching emotionally or financially. Sees the yacht as a reward for hard work — a symbol of arrival, but not excess.</p>
+            <h5>How They Use the Boat</h5>
+            <ul>
+              <li>Day cruising in South Florida</li>
+              <li>Weekend Keys & Bahamas trips</li>
+              <li>Family outings & entertaining</li>
+              <li>Fishing & sandbars</li>
+            </ul>
+          </div>
+          <div class="persona-col">
+            <h5>Fears</h5>
+            <ul style="margin-bottom:12px">
+              <li>"What if this costs more than I expected?"</li>
+              <li>"I don't know enough to spot a bad deal."</li>
+              <li>"What if I end up not using it as much as I imagine?"</li>
+              <li>Making a public mistake. Buyer's remorse.</li>
+            </ul>
+            <h5>What They Want From a Broker</h5>
+            <p>A guide, a teacher, a protector. Someone on their side — patient, responsive, honest about problems, present from search through closing.</p>
+          </div>
+        </div>
+        <div class="persona-pillars">
+          <span>Resonates with:</span>
+          <span class="pillar-tag">P1 Dream Boats</span>
+          <span class="pillar-tag">P2 Broker Intelligence</span>
+          <span class="pillar-tag">P3 SOLD Stories</span>
+        </div>
+      </div>
+
+      <!-- Persona 3 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <h3>The Elite Owner</h3>
+          <div class="p-range">$1,000,000 – $5,000,000 yacht range</div>
+        </div>
+        <div class="persona-quote">"I bought this to enjoy it, not manage it."</div>
+        <div class="persona-body">
+          <div class="persona-col">
+            <h5>Mindset</h5>
+            <p style="margin-bottom:12px">Successful, time-constrained, pragmatic. Not buying a "toy" — buying freedom, status, and convenience. Values time over money, reliability over novelty, expertise over sales talk, discretion over flash.</p>
+            <h5>How They Use the Boat</h5>
+            <ul>
+              <li>Extended Bahamas cruising</li>
+              <li>Entertainment & client hosting</li>
+              <li>Family legacy experiences</li>
+              <li>Offshore fishing expeditions</li>
+            </ul>
+          </div>
+          <div class="persona-col">
+            <h5>Fears</h5>
+            <ul style="margin-bottom:12px">
+              <li>"I don't want this to turn into a financial headache."</li>
+              <li>"I bought this to enjoy it, not manage it."</li>
+              <li>"Something is going wrong when people are depending on me."</li>
+              <li>"I don't want to look like I made a rookie mistake."</li>
+            </ul>
+            <h5>What They Want From a Broker</h5>
+            <p>A trusted advisor who anticipates problems, speaks concisely, understands ownership (not just sales), and stays involved after closing. Someone who handles it without drama.</p>
+          </div>
+        </div>
+        <div class="persona-pillars">
+          <span>Resonates with:</span>
+          <span class="pillar-tag">P3 SOLD Stories</span>
+          <span class="pillar-tag">P4 International Buyers</span>
+          <span class="pillar-tag">P5 Behind the Broker</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: SMART GOALS -->
+    <section class="section" id="s4">
+      <div class="section-banner">
+        <span class="s-num">04</span>
+        <h2>SMART Goals & KPIs</h2>
+      </div>
+      <p class="body-text">These goals cover the first 90 days of execution. They are intentionally conservative given that the brand is launching its content machine from zero. After 90 days, targets will be recalibrated based on actual performance data.</p>
+
+      <div class="goal-card">
+        <div class="goal-header"><span class="goal-num">G1</span><h3>Grow Instagram Audience</h3></div>
+        <div class="smart-grid">
+          <div class="smart-cell"><div class="smart-letter">S</div><div class="smart-word">Specific</div><p>Reach 1,000 organic Instagram followers by publishing 21 posts/month across all 5 content pillars.</p></div>
+          <div class="smart-cell"><div class="smart-letter">M</div><div class="smart-word">Measurable</div><p>1,000 followers tracked in Instagram Insights. Engagement rate ≥ 3.5%.</p></div>
+          <div class="smart-cell"><div class="smart-letter">A</div><div class="smart-word">Achievable</div><p>21 posts/month is 5–6 posts/week. Reels algorithm favors consistent new accounts.</p></div>
+          <div class="smart-cell"><div class="smart-letter">R</div><div class="smart-word">Relevant</div><p>Audience growth is the foundation for all other goals — organic reach, ManyChat activation, and paid retargeting.</p></div>
+          <div class="smart-cell"><div class="smart-letter">T</div><div class="smart-word">Time-Bound</div><p>Day 90 target: 1,000 followers. Day 30 milestone: 250. Day 60 milestone: 600.</p></div>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-header"><span class="goal-num">G2</span><h3>Activate ManyChat Lead Capture</h3></div>
+        <div class="smart-grid">
+          <div class="smart-cell"><div class="smart-letter">S</div><div class="smart-word">Specific</div><p>Generate 10 ManyChat DM conversations per month from keyword triggers: BOAT, SOLD, YATE, YAAXTA.</p></div>
+          <div class="smart-cell"><div class="smart-letter">M</div><div class="smart-word">Measurable</div><p>10 ManyChat conversations/month tracked in ManyChat dashboard.</p></div>
+          <div class="smart-cell"><div class="smart-letter">A</div><div class="smart-word">Achievable</div><p>Conservative target accounting for near-zero starting audience. Each pillar post includes a keyword CTA.</p></div>
+          <div class="smart-cell"><div class="smart-letter">R</div><div class="smart-word">Relevant</div><p>ManyChat is the primary 24/7 lead capture mechanism. Every conversation is a potential qualified buyer.</p></div>
+          <div class="smart-cell"><div class="smart-letter">T</div><div class="smart-word">Time-Bound</div><p>ManyChat live by Sep 29. First 10 conversations tracked by Day 30 after go-live.</p></div>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-header"><span class="goal-num">G3</span><h3>Generate Paid Media Leads</h3></div>
+        <div class="smart-grid">
+          <div class="smart-cell"><div class="smart-letter">S</div><div class="smart-word">Specific</div><p>Generate 5 qualified paid leads per month from Meta campaigns at $1,000/month ad spend in South Florida.</p></div>
+          <div class="smart-cell"><div class="smart-letter">M</div><div class="smart-word">Measurable</div><p>5 leads/month tracked through Meta Lead Gen forms. CPL benchmarked against industry standard ($180–$420).</p></div>
+          <div class="smart-cell"><div class="smart-letter">A</div><div class="smart-word">Achievable</div><p>First 30 days are data collection. Optimization begins Day 30+. 5 leads/month is conservative for $1K spend.</p></div>
+          <div class="smart-cell"><div class="smart-letter">R</div><div class="smart-word">Relevant</div><p>Paid media amplifies best organic content and retargets warm audiences already engaging with the brand.</p></div>
+          <div class="smart-cell"><div class="smart-letter">T</div><div class="smart-word">Time-Bound</div><p>Ads go live Sep 29–30. First paid leads reported by Day 30 after launch. Scale trigger: consistent CPL + pipeline conversion.</p></div>
+        </div>
+      </div>
+
+      <div class="sub-banner">KPI Dashboard — Track Monthly</div>
+      <div class="table-wrap">
+        <table class="kpi-table">
+          <thead><tr><th>Metric</th><th>Baseline</th><th>Day 30</th><th>Day 60</th><th>Day 90 Target</th><th>Pillar</th></tr></thead>
+          <tbody>
+            <tr><td>Instagram Followers</td><td>0</td><td>250</td><td>600</td><td class="kpi-target">1,000+</td><td>All Pillars</td></tr>
+            <tr><td>Avg. Engagement Rate</td><td>n/a</td><td>≥4%</td><td>≥3.5%</td><td class="kpi-target">≥3.5%</td><td>All Pillars</td></tr>
+            <tr><td>Reels Average Views</td><td>n/a</td><td>1,000</td><td>2,500</td><td class="kpi-target">5,000</td><td>P1 · P3 · P5</td></tr>
+            <tr><td>ManyChat Conversations</td><td>0</td><td>2</td><td>5</td><td class="kpi-target">10</td><td>All Pillars</td></tr>
+            <tr><td>DM → Qualified Lead Rate</td><td>n/a</td><td>Track</td><td>Track</td><td class="kpi-target">Baseline set</td><td>ManyChat</td></tr>
+            <tr><td>Posts Published / Month</td><td>0</td><td>21</td><td>21</td><td class="kpi-target">21</td><td>All Pillars</td></tr>
+            <tr><td>Paid: Leads / Month</td><td>0</td><td>Track</td><td>3+</td><td class="kpi-target">5+</td><td>Paid Media</td></tr>
+            <tr><td>Paid: Cost Per Lead</td><td>n/a</td><td>Track</td><td>Track</td><td class="kpi-target">Benchmark set</td><td>Paid Media</td></tr>
+            <tr><td>Story Views / Week</td><td>n/a</td><td>200</td><td>500</td><td class="kpi-target">1,000</td><td>Stories</td></tr>
+            <tr><td>Broker Content Pieces/Mo</td><td>0</td><td>4</td><td>6</td><td class="kpi-target">8</td><td>P2 · P5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- S5: CONTENT STRATEGY -->
+    <section class="section" id="s5">
+      <div class="section-banner">
+        <span class="s-num">05</span>
+        <h2>Content Strategy</h2>
+      </div>
+
+      <div class="sub-banner">5.1 Brand Voice & Philosophy</div>
+      <div class="two-col">
+        <div class="two-col-row"><div>Tone</div><div>Aspirational but approachable. Expert but human. We speak like the smartest, most trusted friend at the marina — not like a luxury brand trying to impress you.</div></div>
+        <div class="two-col-row"><div>Point of View</div><div>We listen first. Every piece of content teaches, inspires, or proves something real. No fluff. No pressure. No vanity metrics.</div></div>
+        <div class="two-col-row"><div>AEO Principle</div><div>Every educational piece of content is written to be cited by AI tools (ChatGPT, Perplexity, Google AI Overview). Clear, direct, authoritative answers to questions buyers are actually asking.</div></div>
+        <div class="two-col-row"><div>Language</div><div>Bilingual minimum: English + Spanish on all posts. Russian on targeted content for Eastern European audience. Tone adapts per language — not literal translations.</div></div>
+        <div class="two-col-row"><div>Visual Identity</div><div>Cinematic, not corporate. Real boats, real brokers, real moments. The YH brand shows up in the way things are framed — not in watermarks or overlays.</div></div>
+      </div>
+
+      <div class="insight-card">
+        <div class="ic-label">Content Philosophy</div>
+        <p>"We are not here to sell boats. We are here to help people fall in love with the water — and when they're ready, to be the most obvious, most trusted choice to help them own it."</p>
+      </div>
+
+      <div class="sub-banner">5.2 The Five Content Pillars</div>
+      <p class="body-text">The five pillars are the operational engine of the content strategy. Each pillar is mapped to one or more strategic goals, with a clear primary objective and a secondary benefit. Every piece of content Yacht Habit publishes belongs to one of these pillars.</p>
+
+      <!-- PILLAR 1 -->
+      <div class="pillar-card">
+        <div class="pillar-top">
+          <span class="pillar-num">P1</span>
+          <span class="pillar-name">Dream Boats</span>
+        </div>
+        <div class="pillar-goal-row"><strong>Strategic Goal: </strong> Attract followers, grow engagement, and build brand awareness.</div>
+        <div class="pillar-chips">
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> ENGAGE — PRIMARY</span>
+          <span class="goal-chip chip-secondary"><span class="chip-star">◎</span> GENERATE LEADS — SECONDARY</span>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-left">
+            <div class="pillar-section-label">Purpose</div>
+            <p class="pillar-purpose">Aspirational vessel showcases. Show the experience, not just the specs.</p>
+            <div class="pillar-section-label">Formats</div>
+            <div class="format-row"><span class="format-pct">60%</span><span class="format-type">Reels</span></div>
+            <div class="format-row"><span class="format-pct">25%</span><span class="format-type">Carousels</span></div>
+            <div class="format-row"><span class="format-pct">15%</span><span class="format-type">Static</span></div>
+          </div>
+          <div class="pillar-right">
+            <div class="pillar-section-label">Content Tactics</div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Cinematic walkthroughs: spaces, details, and possibilities of each vessel</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Opening hook: price reveal, lifestyle scene, or impact shot</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Yacht Habits series: fishing, Bahamas cruising, sunset dinners, family time, water sports, remote work on the water</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>"How do you want to spend your time on the water?" — not "What boat do you want?"</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Jet Habits: lifestyle scenarios connecting jet and yacht ownership (gradual rollout with jet partners)</span></div>
+            <div class="pillar-cta">
+              <strong>CTA</strong>
+              "Comment BOAT and we'll send you this listing's full details"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 2 -->
+      <div class="pillar-card">
+        <div class="pillar-top">
+          <span class="pillar-num">P2</span>
+          <span class="pillar-name">Broker Intelligence</span>
+        </div>
+        <div class="pillar-goal-row"><strong>Strategic Goal: </strong> Educate, build awareness, and establish Yacht Habit as the industry authority.</div>
+        <div class="pillar-chips">
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> BUILD AUTHORITY — PRIMARY</span>
+          <span class="goal-chip chip-secondary"><span class="chip-star">◎</span> ENGAGE — SECONDARY</span>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-left">
+            <div class="pillar-section-label">Purpose</div>
+            <p class="pillar-purpose">Real expert knowledge. Yacht Habit brokers as the most trusted source in the market.</p>
+            <div class="pillar-section-label">Formats</div>
+            <div class="format-row"><span class="format-pct">50%</span><span class="format-type">Carousels</span></div>
+            <div class="format-row"><span class="format-pct">30%</span><span class="format-type">Reels</span></div>
+            <div class="format-row"><span class="format-pct">20%</span><span class="format-type">Static</span></div>
+          </div>
+          <div class="pillar-right">
+            <div class="pillar-section-label">Content Tactics</div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Educational guides: buying your first yacht, new vs. pre-owned, real cost of ownership</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Market insights and comparisons from the broker's point of view</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Transformation Journeys: broker origin stories, mistakes, lessons learned</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span style="font-style:italic">"What 10 years in yachting taught me about buying the right boat."</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span style="font-style:italic">"A mistake I made early in my career as a yacht broker."</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span style="font-style:italic">"Three things I wish every buyer knew."</span></div>
+            <div class="pillar-cta">
+              <strong>Script Review Process</strong>
+              Jason + broker review every script before any filming begins. Non-negotiable.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 3 -->
+      <div class="pillar-card">
+        <div class="pillar-top">
+          <span class="pillar-num">P3</span>
+          <span class="pillar-name">SOLD Stories</span>
+        </div>
+        <div class="pillar-goal-row"><strong>Strategic Goal: </strong> Build trust through social proof grounded in real transactions.</div>
+        <div class="pillar-chips">
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> BUILD AUTHORITY — PRIMARY</span>
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> GENERATE LEADS — PRIMARY</span>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-left">
+            <div class="pillar-section-label">Purpose</div>
+            <p class="pillar-purpose">Real results. Authentic buyers. The story behind every SOLD.</p>
+            <div class="pillar-section-label">Formats</div>
+            <div class="format-row"><span class="format-pct">50%</span><span class="format-type">Reels</span></div>
+            <div class="format-row"><span class="format-pct">30%</span><span class="format-type">Carousels</span></div>
+            <div class="format-row"><span class="format-pct">20%</span><span class="format-type">Static</span></div>
+          </div>
+          <div class="pillar-right">
+            <div class="pillar-section-label">Content Tactics</div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Deal reveals: the moment a sale closes, told as a story</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Client journey recaps — lifestyle fit, not just boat specs</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>When boat or client access is limited: re-create the sales process creatively</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>All brokers credited as "Yacht Habit Broker [Name]" — no personal branding</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Hook: reveal the sale price in the first 3 seconds</span></div>
+            <div class="pillar-cta">
+              <strong>CTA</strong>
+              "Comment SOLD and we'll send you our buyer success guide"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 4 -->
+      <div class="pillar-card">
+        <div class="pillar-top">
+          <span class="pillar-num">P4</span>
+          <span class="pillar-name">International Buyers</span>
+        </div>
+        <div class="pillar-goal-row"><strong>Strategic Goal: </strong> Reach buyers in LATAM, the Caribbean, and Eastern Europe in their language.</div>
+        <div class="pillar-chips">
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> GENERATE LEADS — PRIMARY</span>
+          <span class="goal-chip chip-secondary"><span class="chip-star">◎</span> BUILD AUTHORITY — SECONDARY</span>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-left">
+            <div class="pillar-section-label">Purpose</div>
+            <p class="pillar-purpose">Trilingual content (EN/ES/RU). The only luxury brokerage with structured multilingual reach.</p>
+            <div class="pillar-section-label">Formats</div>
+            <div class="format-row"><span class="format-pct">40%</span><span class="format-type">Reels</span></div>
+            <div class="format-row"><span class="format-pct">40%</span><span class="format-type">Carousels</span></div>
+            <div class="format-row"><span class="format-pct">20%</span><span class="format-type">Static</span></div>
+            <div style="height:12px"></div>
+            <div class="pillar-section-label">ManyChat Keywords</div>
+            <div class="manychat-kw">
+              <span class="kw-badge">BOAT</span><span class="kw-lang">English</span>
+              <span class="kw-badge">SOLD</span><span class="kw-lang">English</span>
+              <span class="kw-badge">YATE</span><span class="kw-lang">Spanish</span>
+              <span class="kw-badge">YAAXTA</span><span class="kw-lang">Russian</span>
+            </div>
+          </div>
+          <div class="pillar-right">
+            <div class="pillar-section-label">Content Tactics</div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Regulatory guides: how to purchase a vessel in the U.S. as a foreign buyer</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Logistics: financing, documentation, international transport</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Bilingual captions on all posts (EN + ES minimum)</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Russian-language content for Eastern European audience</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Multilingual ManyChat keywords for automated 24/7 lead capture</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Future: expansion to additional languages as the team grows</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 5 -->
+      <div class="pillar-card">
+        <div class="pillar-top">
+          <span class="pillar-num">P5</span>
+          <span class="pillar-name">Behind the Broker</span>
+        </div>
+        <div class="pillar-goal-row"><strong>Strategic Goal: </strong> Humanize the brand, attract aligned talent, and showcase team culture.</div>
+        <div class="pillar-chips">
+          <span class="goal-chip chip-primary"><span class="chip-star">★</span> ENGAGE — PRIMARY</span>
+          <span class="goal-chip chip-secondary"><span class="chip-star">◎</span> BUILD AUTHORITY — SECONDARY</span>
+        </div>
+        <div class="pillar-body">
+          <div class="pillar-left">
+            <div class="pillar-section-label">Purpose</div>
+            <p class="pillar-purpose">Real people. Real passion. A culture of listening first and selling second.</p>
+            <div class="pillar-section-label">Formats</div>
+            <div class="format-row"><span class="format-pct">70%</span><span class="format-type">Reels</span></div>
+            <div class="format-row"><span class="format-pct">20%</span><span class="format-type">Stories</span></div>
+            <div class="format-row"><span class="format-pct">10%</span><span class="format-type">Static</span></div>
+          </div>
+          <div class="pillar-right">
+            <div class="pillar-section-label">Content Tactics</div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Broker expertise shown through real scenarios and decisions</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Team culture content to attract brokers who share Yacht Habit values</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Personal stories: why they got into yachting, what the water has taught them</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>All brokers presented exclusively as "Yacht Habit Brokers"</span></div>
+            <div class="tactic-row"><span class="tactic-arrow">→</span><span>Show the listening culture — not just the selling culture</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-banner">5.3 Content Mix & Publishing Calendar</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Format</th><th>%</th><th>Posts/Mo</th><th>Main Pillars</th><th>Optimization Goal</th></tr></thead>
+          <tbody>
+            <tr><td>Reels</td><td style="font-weight:700;color:var(--gmds-blue)">40%</td><td>8–9</td><td>P1 Dream Boats · P3 SOLD Stories · P5 Behind the Broker</td><td>Reach & Discovery — hook in first 3 seconds</td></tr>
+            <tr><td>Carousels</td><td style="font-weight:700;color:var(--gmds-blue)">30%</td><td>6–7</td><td>P2 Broker Intelligence · P4 International Buyers</td><td>Save Rate & Authority — swipe-worthy education</td></tr>
+            <tr><td>Static Posts</td><td style="font-weight:700;color:var(--gmds-blue)">15%</td><td>3</td><td>P3 SOLD Stories · P1 Dream Boats</td><td>Brand Consistency — quick-read format</td></tr>
+            <tr><td>Stories</td><td style="font-weight:700;color:var(--gmds-blue)">15%</td><td>3–4/wk</td><td>P5 Behind the Broker · P2 Broker Intelligence</td><td>DM Conversations — polls, Q&A, behind-scenes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-banner">5.4 ManyChat Automation</div>
+      <p class="body-text">ManyChat is the 24/7 lead capture layer that converts comments into qualified conversations without requiring a human to be online. A user comments a keyword → ManyChat sends an instant DM → conversation begins → lead qualifies themselves.</p>
+      <div class="two-col">
+        <div class="two-col-row"><div>BOAT (EN)</div><div>Triggers on any comment containing "BOAT" on Dream Boats pillar content. Sends full listing details + broker intro.</div></div>
+        <div class="two-col-row"><div>SOLD (EN)</div><div>Triggers on SOLD Stories content. Sends buyer success guide + invite to consultation.</div></div>
+        <div class="two-col-row"><div>YATE (ES)</div><div>Spanish keyword for LATAM and Caribbean audience. Same flow in Spanish.</div></div>
+        <div class="two-col-row"><div>YAAXTA (RU)</div><div>Russian keyword for Eastern European audience. Flow delivered in Russian.</div></div>
+      </div>
+
+      <div class="sub-banner">5.5 Broker Brand Policy</div>
+      <div class="insight-card">
+        <div class="ic-label">Policy — Effective Immediately</div>
+        <p>All brokers are presented exclusively as "Yacht Habit Broker [Name]" in all YH marketing. Personal brands are not included in Yacht Habit content. Brokers are encouraged to maintain their own personal brands separately — but Yacht Habit marketing is one unified brand.</p>
+      </div>
+    </section>
+
+    <!-- S6: PAID MEDIA -->
+    <section class="section" id="s6">
+      <div class="section-banner">
+        <span class="s-num">06</span>
+        <h2>Paid Media Plan</h2>
+      </div>
+      <p class="body-text">All paid media campaigns run on Meta (Instagram + Facebook). All campaigns use Lead Generation objective only. All targeting is South Florida only. Budget: $1,000/month total.</p>
+
+      <div class="sub-banner">Campaign Structure</div>
+      <div class="campaign-grid">
+        <div class="campaign-card">
+          <div class="campaign-header"><h4>Campaign 1 — Retargeting</h4></div>
+          <div class="campaign-body">
+            <div class="campaign-row"><span>Budget</span><span>$400/mo</span></div>
+            <div class="campaign-row"><span>Objective</span><span>Lead Generation</span></div>
+            <div class="campaign-row"><span>Audience</span><span>IG engagers, video viewers (30s+), profile visitors (30 days)</span></div>
+            <div class="campaign-row"><span>Geography</span><span>South Florida only</span></div>
+            <div class="campaign-row"><span>Creative</span><span>Best-performing organic reels + SOLD Stories</span></div>
+          </div>
+        </div>
+        <div class="campaign-card">
+          <div class="campaign-header"><h4>Campaign 2 — Lookalike</h4></div>
+          <div class="campaign-body">
+            <div class="campaign-row"><span>Budget</span><span>$350/mo</span></div>
+            <div class="campaign-row"><span>Objective</span><span>Lead Generation</span></div>
+            <div class="campaign-row"><span>Audience</span><span>1% LAL from page engagers + video viewers</span></div>
+            <div class="campaign-row"><span>Geography</span><span>South Florida only</span></div>
+            <div class="campaign-row"><span>Creative</span><span>Dream Boats reels, educational carousels</span></div>
+          </div>
+        </div>
+        <div class="campaign-card">
+          <div class="campaign-header"><h4>Campaign 3 — Cold Prospecting</h4></div>
+          <div class="campaign-body">
+            <div class="campaign-row"><span>Budget</span><span>$250/mo</span></div>
+            <div class="campaign-row"><span>Objective</span><span>Lead Generation</span></div>
+            <div class="campaign-row"><span>Audience</span><span>Interest: boating, luxury, real estate, fishing (HHI $200K+)</span></div>
+            <div class="campaign-row"><span>Geography</span><span>South Florida only</span></div>
+            <div class="campaign-row"><span>Creative</span><span>Aspirational Dream Boats content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-banner">Paid Media Philosophy</div>
+      <div class="two-col">
+        <div class="two-col-row"><div>Objective</div><div>Lead Generation only. No awareness campaigns, no content amplification. Every dollar is tracked against leads generated.</div></div>
+        <div class="two-col-row"><div>Geography</div><div>South Florida only. No LATAM, no international targeting in paid. International reach happens organically through trilingual content.</div></div>
+        <div class="two-col-row"><div>Creative Rule</div><div>Only boost content that has already proven organic engagement. Never run a cold creative as a paid ad.</div></div>
+        <div class="two-col-row"><div>Scale Trigger</div><div>When CPL is consistent and pipeline is converting, increase budget by $500/month increments. Scale is earned, not assumed.</div></div>
+        <div class="two-col-row"><div>Pixel Strategy</div><div>First 30 days = pixel data collection. No optimization pressure. Optimize from Day 30 forward with real data.</div></div>
+      </div>
+    </section>
+
+    <!-- S7: ACTION PLAN -->
+    <section class="section" id="s7">
+      <div class="section-banner">
+        <span class="s-num">07</span>
+        <h2>Action Plan & 90-Day Roadmap</h2>
+      </div>
+      <p class="body-text">This roadmap reflects the actual onboarding timeline established in the September 3rd kickoff email. Phase 1 (infrastructure) was completed by September 11th. Phase 2 (strategy) is being completed in Week 2. The first content shoot is targeted for September 24th, with ads going live the last week of September.</p>
+
+      <div class="phase-banner phase-done">Phase 1 — Sep 7–11 (Completed): Infrastructure</div>
+      <div class="table-wrap">
+        <table class="action-table">
+          <thead><tr><th>Date</th><th>Task</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="done-row"><td>Sep 7</td><td>Received all credentials and account access from client.</td><td>Jason</td><td><span class="status-badge s-done">Done</span></td></tr>
+            <tr class="done-row"><td>Sep 11</td><td>Sofía completed contact transfer to CRM. Tags and lead classification criteria set up.</td><td>Sofía</td><td><span class="status-badge s-done">Done</span></td></tr>
+            <tr class="done-row"><td>Sep 11</td><td>Infrastructure Phase 1 complete: ManyChat foundations, CRM tags, credentials connected.</td><td>GMDS</td><td><span class="status-badge s-done">Done</span></td></tr>
+            <tr class="prog-row"><td>Pending</td><td>Activate phone numbers (final remaining infrastructure item).</td><td>GMDS</td><td><span class="status-badge s-prog">In Progress</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="phase-banner phase-now">Phase 2 — Sep 11–24: Strategy & Pre-Production</div>
+      <div class="table-wrap">
+        <table class="action-table">
+          <thead><tr><th>Date</th><th>Task</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="done-row"><td>Sep 11–17</td><td>Full Marketing Strategy delivered to Jason. Review session scheduled.</td><td>GMDS</td><td><span class="status-badge s-done">Done</span></td></tr>
+            <tr class="prog-row"><td>Sep 17–24</td><td>Strategy review with Jason. Pillar priorities confirmed. Broker filming schedule set.</td><td>Jason + GMDS</td><td><span class="status-badge s-prog">In Progress</span></td></tr>
+            <tr><td>Sep 17–24</td><td>ManyChat keyword flows built and tested in sandbox.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Sep 17–24</td><td>Ad creative brief drafted. First 3 campaign creatives sourced from organic content.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Sep 24</td><td>First content shoot. Minimum: 2 vessel walkthroughs, 1 broker introduction video, 1 lifestyle reel.</td><td>Jason + GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="phase-banner phase-next">Phase 3 — Sep 29–Oct 31: Launch</div>
+      <div class="table-wrap">
+        <table class="action-table">
+          <thead><tr><th>Date</th><th>Task</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Sep 29–30</td><td>First organic posts go live. ManyChat activated with BOAT and SOLD keywords.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Sep 29–30</td><td>Meta campaigns go live. Retargeting + Lookalike campaigns first. Cold prospecting Day 7+.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Oct 1–31</td><td>21 posts published. Daily story cadence. ManyChat conversations tracked and optimized.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Oct 30</td><td>Day 30 performance review. First optimization pass on paid campaigns. KPIs assessed vs. targets.</td><td>Katherine + Jason</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="phase-banner phase-next" style="background:linear-gradient(90deg,#2E86C1,#5B2D8E)">Phase 4 — Nov–Dec: Optimize & Scale</div>
+      <div class="table-wrap">
+        <table class="action-table">
+          <thead><tr><th>Date</th><th>Task</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Nov 1–30</td><td>Month 2: Double down on best-performing content formats. Add YATE and YAAXTA ManyChat flows.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Nov 30</td><td>Day 60 performance review. Budget optimization decisions. New broker content integrated.</td><td>Katherine + Jason</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Dec 1–16</td><td>Month 3: Scale what's working. Begin content series (Yacht Habits recurring format). Day 90 review.</td><td>GMDS</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+            <tr><td>Dec 16</td><td>90-Day North Star assessment. Strategy recalibration for Q1 2027.</td><td>Katherine + Jason</td><td><span class="status-badge s-pend">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- S8: APPENDIX -->
+    <section class="section" id="s8">
+      <div class="section-banner">
+        <span class="s-num">08</span>
+        <h2>Appendix: Key Decisions & Brand Notes</h2>
+      </div>
+
+      <div class="sub-banner">Confirmed Strategic Decisions</div>
+      <div class="two-col">
+        <div class="two-col-row"><div>Broker Brand Policy</div><div>All brokers presented exclusively as "Yacht Habit Broker [Name]" in all YH marketing. Personal brands not included. Effective immediately.</div></div>
+        <div class="two-col-row"><div>Content Pillar System</div><div>Five operational pillars (P1–P5) mapped to three strategic goals (Engage → Build Authority → Generate Leads).</div></div>
+        <div class="two-col-row"><div>Jet Habits</div><div>Jet content integrated into Pillars 1 and 2 as "Jet Habits" concept. No separate pillar. Gradual rollout coordinated with jet partners.</div></div>
+        <div class="two-col-row"><div>Trilingual Content</div><div>English + Spanish minimum on all posts. Russian for targeted Eastern European audience. Strategy for additional languages as team grows.</div></div>
+        <div class="two-col-row"><div>Script Review Process</div><div>All Broker Intelligence content requires script review by Jason + broker before any filming begins. Non-negotiable.</div></div>
+        <div class="two-col-row"><div>Paid Media Philosophy</div><div>All campaigns are Lead Generation objective. No awareness or amplification campaigns. South Florida targeting only. Retarget warm audiences first. Meta over listing platforms.</div></div>
+      </div>
+
+      <div class="sub-banner">Pending Decisions (Requires Client Input)</div>
+      <ul class="bullet-list">
+        <li>Broker onboarding schedule — which brokers will be filming in Month 1?</li>
+        <li>Website status — is Meta Pixel already installed, or does this need development work?</li>
+        <li>CRM system — what tool tracks leads from ManyChat through to close for attribution?</li>
+        <li>Market research document — referenced in initial brief but not yet shared. Needed to validate market size section.</li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="doc-footer">
+      <div class="tagline-big">Yacht Different. Yacht Better. Yacht Habit.</div>
+      <div class="foot-meta">GMDS Agency · September 2026 · Confidential</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('nav a');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.2 });
+sections.forEach(s => obs.observe(s));
+</script>
+
+</body></html>
